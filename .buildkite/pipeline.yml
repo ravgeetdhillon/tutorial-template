@@ -1,11 +1,12 @@
 steps:
-  - command: python3 -m venv venv
-  - command: source venv/bin/activate
-  - command: export PYTHONPATH="${PYTHONPATH}:$(pwd)"
-  - command: python --version
-  - command: pip --version
-  - command: pip install -r requirements.txt
-  - command: python --version
-  - command: python lumache.py
-  - command: echo "$YOUR_API_TOKEN"
-  - command: curl -X POST -d "branches=master" -d "token=$YOUR_WEBHOOK_TOKEN" $YOUR_WEBHOOK_URL
+  - commands:
+      - python3 -m venv venv
+      - source venv/bin/activate
+      - export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+      - python --version
+      - pip --version
+      - pip install -r requirements.txt
+      - python --version
+      - python lumache.py
+      - echo "$YOUR_API_TOKEN"
+      - curl -X POST -d "branches=master" -d "token=$YOUR_WEBHOOK_TOKEN" $YOUR_WEBHOOK_URL
