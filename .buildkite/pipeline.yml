@@ -1,5 +1,5 @@
 steps:
-  - command: 'echo "Hello World"'
+  - command: 'echo "Hello World 2"'
     label: "Run Something"
   - command: "scripts/build.sh"
   - wait
