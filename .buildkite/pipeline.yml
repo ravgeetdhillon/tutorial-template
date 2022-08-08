@@ -6,16 +6,20 @@ steps:
       - export PYTHONPATH="${PYTHONPATH}:$(pwd)"
       - python --version
       - pip --version
+  - wait
   - label: "Install Dependencies"
     commands:
       - pip install -r requirements.txt
+  - wait
   - label: "Run Tests"
     commands:
       - python --version
       - python lumache.py
+  - wait
   - label: "Build and Publish to PyPI"
     commands:
       - echo "$YOUR_API_TOKEN"
+  - wait
   - label: "Update Docs"
     commands:
       - curl -X POST -d "branches=master" -d "token=$YOUR_WEBHOOK_TOKEN" $YOUR_WEBHOOK_URL
