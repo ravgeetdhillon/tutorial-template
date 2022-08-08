@@ -1,0 +1,8 @@
+steps:
+  - command: 'echo "Hello World"'
+    label: "Run Something"
+  - command: "scripts/build.sh"
+  - wait
+  - command: "curl --version"
+  - command: "system_profiler"
+  - command: 'echo "Done!"'
