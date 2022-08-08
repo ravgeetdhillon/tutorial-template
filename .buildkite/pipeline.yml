@@ -1,8 +1,18 @@
 steps:
-  - command: 'echo "Hello World 2"'
-    label: "Run Something"
-  - command: "scripts/build.sh"
-  - wait
-  - command: "curl --version"
-  - command: "ls -a"
-  - command: 'echo "Done!"'
+  - label: "Set up Environment"
+    commands:
+      - python3 -m venv venv
+      - source venv/bin/activate
+      - export PYTHONPATH="${PYTHONPATH}:$(pwd)
+  - label: "Install Dependencies"
+    commands:
+      - pip install -r requirements.txt
+  - label: "Run Tests"
+    commands:
+      - python lumache.py
+  - label: "Build and Publish to PyPI"
+    commands:
+      - echo "$YOUR_API_TOKEN"
+  - label: "Update Docs"
+    commands:
+      - curl -X POST -d "branches=master" -d "token=$YOUR_WEBHOOK_TOKEN" $YOUR_WEBHOOK_URL
