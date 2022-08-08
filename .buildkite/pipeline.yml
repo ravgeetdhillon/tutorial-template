@@ -4,5 +4,5 @@ steps:
   - command: "scripts/build.sh"
   - wait
   - command: "curl --version"
-  - command: "system_profiler"
+  - command: "ls -a"
   - command: 'echo "Done!"'
